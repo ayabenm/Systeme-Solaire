@@ -10,54 +10,38 @@ class ResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('النتيجة'),
-        backgroundColor: Colors.transparent, // Rendre l'AppBar transparente
-        elevation: 0, // Pas d'ombre pour l'AppBar
+        title: Text('نتائج الاختبار'),
+        backgroundColor: Colors.deepPurpleAccent,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/back.jpeg'), // Votre image de fond
-            fit: BoxFit.cover, // Pour que l'image couvre toute la zone
-            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5),
-                BlendMode.darken), // Applique un filtre sombre
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Résultat
-              Text(
-                'نتيجتك: $score / $total',
-                style: TextStyle(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.celebration, color: Colors.blueAccent, size: 100),
+            SizedBox(height: 20),
+            Text(
+              'نتيجتك: $score / $total',
+              style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors
-                      .white, // Texte en blanc pour ressortir sur le fond sombre
-                  shadows: [
-                    Shadow(
-                        blurRadius: 5,
-                        color: Colors.black,
-                        offset: Offset(2, 2))
-                  ], // Ombre légère pour le texte
+                  color: Colors.black87),
+            ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                backgroundColor: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              SizedBox(height: 20),
-              // Bouton de retour à la page d'accueil
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.popUntil(context, (route) => route.isFirst);
-                },
-                child: Text('العودة إلى الصفحة الرئيسية'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                  textStyle: TextStyle(fontSize: 18),
-                ),
-              ),
-            ],
-          ),
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
+              child: Text('العودة إلى الصفحة الرئيسية',
+                  style: TextStyle(fontSize: 18)),
+            ),
+          ],
         ),
       ),
     );

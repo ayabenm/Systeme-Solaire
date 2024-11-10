@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../planet.dart';
+import 'planet.dart'; // Import the Planet model
 
 class PlanetCard extends StatelessWidget {
   final Planet planet;
@@ -13,10 +13,9 @@ class PlanetCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        elevation: 15,
-        shadowColor: Colors.black,
+        elevation: 12,
+        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Stack(
-          clipBehavior: Clip.none,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
@@ -32,7 +31,7 @@ class PlanetCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 gradient: LinearGradient(
-                  colors: [Colors.black54, Colors.transparent],
+                  colors: [Colors.black.withOpacity(0.5), Colors.transparent],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                 ),

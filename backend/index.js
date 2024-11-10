@@ -1,14 +1,16 @@
 const express = require('express');
 const admin = require('firebase-admin');
-const serviceAccount = require('./solarsystem-def59-default-rtdb-export.json');
+const cors = require('cors'); // Import the cors package
+const serviceAccount = require('./solarsystem-def59-default-rtdb.firebaseio.com');
 
 // Initialisez Firebase avec les informations d'identification du compte de service
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://solarsystem-def59-default-rtdb.firebaseio.com"
+  databaseURL: "https://test-507a6-default-rtdb.europe-west1.firebasedatabase.app/"
 });
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Route de base
@@ -37,12 +39,15 @@ app.get('/getPlanets', async (req, res) => {
     const ref = db.ref('planets'); // Référence au nœud 'planets'
     const snapshot = await ref.once('value'); // Récupère les données sous 'planets'
     const data = snapshot.val(); // Obtient les données en format JSON
-    res.status(200).json(data);
+
+    // Convert the object to an array of planets
+    const planets = data ? Object.values(data) : [];
+
+    res.status(200).json(planets); // Send the data as an array
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
-
 // Route pour ajouter des questions de quiz dans Realtime Database
 app.post('/addQuizQuestion', async (req, res) => {
   try {
