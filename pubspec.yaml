@@ -68,6 +68,9 @@ flutter:
     - assets/images/saturn.jpg
     - assets/images/neptune.jpg
     - assets/images/uranus.jpg
+    - assets/images/back.jpeg
+    - assets/images/bac.jpg
+    - assets/images/backend.jpeg
     
     
   #- images/a_dot_ham.jpeg

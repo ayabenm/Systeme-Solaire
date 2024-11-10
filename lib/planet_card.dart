@@ -13,21 +13,26 @@ class PlanetCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        elevation: 12,
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        elevation: 15,
+        shadowColor: Colors.black,
         child: Stack(
+          clipBehavior: Clip.none,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(planet.image,
-                  fit: BoxFit.cover, height: 180, width: double.infinity),
+              child: Image.asset(
+                planet.image,
+                fit: BoxFit.cover,
+                height: 180,
+                width: double.infinity,
+              ),
             ),
             Container(
               height: 180,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 gradient: LinearGradient(
-                  colors: [Colors.black.withOpacity(0.5), Colors.transparent],
+                  colors: [Colors.black54, Colors.transparent],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                 ),
